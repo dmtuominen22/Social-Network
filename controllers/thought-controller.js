@@ -4,10 +4,12 @@ const thoughtController = {
 
     //get all of the thoughts
     getAllThoughts(req, res) {
+        console.log("my thought");
         Thought.find({})
         .populate({
             path: 'user',
-            select: '-__v'
+            select: '-__v',
+            strictPopulate: false
         })
         .select('-__v')
         .sort({ _id: -1 })
