@@ -7,10 +7,14 @@ const thoughtController = {
         console.log("my thought");
         Thought.find({})
         .populate({
+            path: 'reactions',
+         })  
+        .populate({
             path: 'user',
             select: '-__v',
             strictPopulate: false
         })
+   
         .select('-__v')
         .sort({ _id: -1 })
         .then(dbThoughtData => res.json(dbThoughtData))

@@ -8,6 +8,9 @@ const userController = {
             path: 'thoughts',
             select: '-__v'
          })
+         .populate({
+            path: 'reactions',
+         })     
         .select('-__v')
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -43,7 +46,9 @@ const userController = {
     },
 
     //add friend
+    
     addFriend({ params }, res) {
+        console.log("friends");
         User.findOneAndUpdate(
             {_id: params.userId},
             { $push: { friends: params.friendId } },
