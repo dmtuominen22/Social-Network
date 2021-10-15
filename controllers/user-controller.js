@@ -8,9 +8,7 @@ const userController = {
             path: 'thoughts',
             select: '-__v'
          })
-         .populate({
-            path: 'reactions',
-         })     
+  
         .select('-__v')
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {

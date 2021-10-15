@@ -4,11 +4,7 @@ const thoughtController = {
 
     //get all of the thoughts
     getAllThoughts(req, res) {
-        console.log("my thought");
         Thought.find({})
-        .populate({
-            path: 'reactions',
-         })  
         .populate({
             path: 'user',
             select: '-__v',
