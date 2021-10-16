@@ -17,7 +17,12 @@
 https://github.com/dmtuominen22/Social-Network
 
 ## Website 
-not deployed to a website
+Not deployed to a website, but made a walkthough video 
+
+https://youtu.be/HUEUUo2z0dQ
+
+Image of Routes in Insomnia
+![image](https://user-images.githubusercontent.com/84994258/137600719-28ca0ed8-d9ea-4020-8b72-a4668090ead2.png)
 ## Languages
   JavaScript, Node.js, MongoDB, Express.js, Mongoosejs
 ## Installations
