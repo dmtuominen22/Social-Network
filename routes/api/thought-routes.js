@@ -23,11 +23,11 @@ router
 
 router
 .route('/:thoughtId/reactions')
-.put(addReaction)
-// .post(addReaction)
+.post(addReaction)
 
 router
-.route('/:thoughtId/:reactionId')
+.route('/:thoughtId/reactions/:reactionId')
 .delete(removeReaction)
 
 module.exports = router;
+

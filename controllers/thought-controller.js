@@ -1,17 +1,9 @@
 const { Thought, User } = require('../models');
 
 const thoughtController = {
-
-    //get all of the thoughts
+    //get all thoughts
     getAllThoughts(req, res) {
         Thought.find({})
-        .populate({
-            path: 'user',
-            select: '-__v',
-            strictPopulate: false
-        })
-   
-        .select('-__v')
         .sort({ _id: -1 })
         .then(dbThoughtData => res.json(dbThoughtData))
         .catch(err => {
@@ -20,7 +12,7 @@ const thoughtController = {
         });
     },
 
-    //get just one thought by ID  
+    //get one thought by there ID
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.id })
             .populate({
@@ -36,7 +28,7 @@ const thoughtController = {
            })
     },
 
-    //create thought
+    //create a thought
     createThought({ params, body }, res) {
         Thought.create(body)
             .then(({ _id}) => {
@@ -73,18 +65,19 @@ const thoughtController = {
         .catch(err => res.json(err));
     },
 
-    //delete a Reaction
+    //delete  a Reaction
     removeReaction({ params }, res) {
+        console.log("this is where I put it");
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
             { $pull: { reactions: { reactionId: params.reactionId } } },
             { new: true }
         )
         .then(dbThoughtData => res.json(dbThoughtData))
-        .catch(err => res.json(err));
+         .catch(err => res.json(err));
     },
 
-    //update a thought by a ID
+    //update a thought by there Id
     updateThought({ params, body }, res) {
         Thought.findOneAndUpdate(
             { _id: params.id }, 
@@ -99,8 +92,8 @@ const thoughtController = {
         })
         .catch(err => res.json(err));
     },
-    
-    //delete a thought by a ID
+
+    //delete a thought by there ID
     deleteThought({ params, body}, res) {
         Thought.findOneAndDelete({ _id: params.id })
         .then(deletedThought => {
@@ -114,3 +107,4 @@ const thoughtController = {
 };
 
 module.exports = thoughtController
+
